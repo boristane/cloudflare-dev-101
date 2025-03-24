@@ -21,16 +21,16 @@ export default {
   },
 };
 
-async function getDurableDatabaseStub(env: Bindings, userId: string) {
+function getDurableDatabaseStub(env: Bindings, userId: string) {
   const doId = env.DurableDatabase.idFromName(userId);
-  return await env.DurableDatabase.get(doId);
+  return env.DurableDatabase.get(doId);
 } 
 
 // Create a note for a user
 app.post('/:userId', async (c) => {
   const userId = c.req.param("userId");
   const { text } = await c.req.json();
-  const stub = await getDurableDatabaseStub(c.env, userId);
+  const stub = getDurableDatabaseStub(c.env, userId);
   const note = await stub.notesCreate({ text });
   return c.json({ note })
 });
@@ -38,7 +38,7 @@ app.post('/:userId', async (c) => {
 // List all notes for a user
 app.get('/:userId', async (c) => {
   const userId = c.req.param("userId");
-  const stub = await getDurableDatabaseStub(c.env, userId);
+  const stub = getDurableDatabaseStub(c.env, userId);
   const notes = await stub.notesList()
   return c.json({ notes })
 });
@@ -47,7 +47,7 @@ app.get('/:userId', async (c) => {
 app.get('/:userId/:noteId', async (c) => {
   const userId = c.req.param("userId");
   const noteId = c.req.param("noteId");
-  const stub = await getDurableDatabaseStub(c.env, userId);
+  const stub = getDurableDatabaseStub(c.env, userId);
   const note = await stub.notesGet({ id: noteId });
   if (!note) {
     return c.notFound();
@@ -59,7 +59,7 @@ app.get('/:userId/:noteId', async (c) => {
 app.delete('/:userId/:noteId', async (c) => {
   const userId = c.req.param("userId");
   const noteId = c.req.param("noteId");
-  const stub = await getDurableDatabaseStub(c.env, userId);
+  const stub = getDurableDatabaseStub(c.env, userId);
   const note = await stub.notesDel({ id: noteId });
   return c.json({ note })
 });
