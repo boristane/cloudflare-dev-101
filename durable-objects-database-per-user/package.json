@@ -1,0 +1,21 @@
+{
+  "name": "durable-objects-database-per-user",
+  "main": "src/index.ts",
+  "scripts": {
+    "drizzle:generate": "drizzle-kit generate",
+    "deploy": "wrangler deploy src/index.ts",
+    "dev": "wrangler dev src/index.ts",
+    "start": "wrangler dev src/index.ts"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.41.0",
+    "hono": "^4.4.6"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-pool-workers": "^0.7.4",
+    "@cloudflare/workers-types": "^4.20250312.0",
+    "@types/node": "^22.13.8",
+    "drizzle-kit": "^0.30.5",
+    "wrangler": "^4.4.0"
+  }
+}

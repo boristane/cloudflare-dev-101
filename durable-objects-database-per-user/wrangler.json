@@ -1,0 +1,36 @@
+{
+  "name": "durable-objects-database-per-user",
+  "compatibility_date": "2024-11-12",
+  "workers_dev": true,
+  "upload_source_maps": true,
+  "observability": {
+    "enabled": true
+  },
+  "main": "./src/index.ts",
+  "migrations": [
+    {
+      "new_sqlite_classes": [
+        "DurableDatabase"
+      ],
+      "tag": "v1"
+    }
+  ],
+  "rules": [
+    {
+      "type": "Text",
+      "globs": [
+        "**/*.sql"
+      ],
+      "fallthrough": true
+    }
+  ],
+  "durable_objects": {
+    "bindings": [
+      {
+        "class_name": "DurableDatabase",
+        "name": "DurableDatabase"
+      }
+    ]
+  },
+  "vars": {}
+}
