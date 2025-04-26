@@ -1,0 +1,27 @@
+{
+  "name": "contextual-rag",
+  "compatibility_date": "2024-11-12",
+  "workers_dev": true,
+  "upload_source_maps": true,
+  "observability": {
+    "enabled": true
+  },
+  "main": "./src/index.ts",
+  "vectorize": [
+    {
+      "binding": "VECTORIZE",
+      "index_name": "contextual-rag-index"
+    }
+  ],
+  "d1_databases": [
+    {
+      "binding": "D1",
+      "database_name": "contextual-rag",
+      "database_id": "6198de3b-a806-4c30-992f-36b97de26463"
+    }
+  ],
+  "ai": {
+    "binding": "AI"
+  },
+  "vars": {}
+}
