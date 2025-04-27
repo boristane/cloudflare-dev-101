@@ -1,6 +1,6 @@
 # Contextual RAG
 
-Reference code for the blog post: [Contextual Retrieval-Augmented Generation on Cloudflare Workers](https://boristane.com/blog/contextual-rag)
+Reference code for the blog post: [Contextual Retrieval-Augmented Generation (RAG) on Cloudflare Workers](https://boristane.com/blog/cloudflare-contextual-rag/)
 
 An implementation of contextual retrieval augmented generation on Cloudflare Workers, providing enhanced search and AI-powered document retrieval.
 
