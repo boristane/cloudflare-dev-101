@@ -1,0 +1,39 @@
+{
+  "name": "durable-objects-graph-database",
+  "compatibility_date": "2025-10-27",
+  "workers_dev": true,
+  "upload_source_maps": true,
+  "observability": {
+    "enabled": true
+  },
+  "main": "./src/index.ts",
+  "assets": {
+    "directory": "./web",
+    "binding": "ASSETS"
+  },
+  "migrations": [
+    {
+      "new_sqlite_classes": [
+        "GraphDatabase"
+      ],
+      "tag": "v1"
+    }
+  ],
+  "rules": [
+    {
+      "type": "Text",
+      "globs": [
+        "**/*.sql"
+      ],
+      "fallthrough": true
+    }
+  ],
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "GraphDatabase",
+        "class_name": "GraphDatabase"
+      }
+    ]
+  }
+}

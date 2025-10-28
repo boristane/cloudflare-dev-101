@@ -1,0 +1,30 @@
+{
+  "name": "durable-objects-graph-database",
+  "version": "1.0.0",
+  "description": "A graph database implementation using Cloudflare Durable Objects",
+  "main": "src/index.ts",
+  "scripts": {
+    "typecheck": "tsc --noemit",
+    "deploy": "wrangler deploy src/index.ts",
+    "dev": "wrangler dev src/index.ts",
+    "start": "wrangler dev src/index.ts"
+  },
+  "keywords": [
+    "cloudflare",
+    "durable-objects",
+    "graph-database",
+    "workers"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "hono": "^4.4.6"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-pool-workers": "0.10.0",
+    "@cloudflare/workers-types": "^4.20250312.0",
+    "@types/node": "24.9.1",
+    "typescript": "^5.3.3",
+    "wrangler": "^4.4.0"
+  }
+}

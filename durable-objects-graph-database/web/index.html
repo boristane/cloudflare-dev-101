@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graph Database Visualizer</title>
+    <link rel="stylesheet" href="/style.css">
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Graph Database</h1>
+            <p class="subtitle">Unlimited, isolated graph databases on Cloudflare's edge network</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Sidebar for controls -->
+            <aside class="sidebar">
+                <section class="control-section">
+                    <h2>Graph Selection</h2>
+                    <div class="form-group">
+                        <label for="graphId">Graph ID</label>
+                        <input type="text" id="graphId" placeholder="my-graph" value="demo-graph">
+                        <small>Each ID creates a separate isolated graph database</small>
+                    </div>
+                    <button id="loadGraph" class="btn btn-primary">Load Graph</button>
+                    <button id="loadSampleData" class="btn btn-secondary">Load Sample Data</button>
+                    <button id="clearGraph" class="btn btn-secondary">Clear Graph</button>
+                </section>
+
+                <section class="control-section">
+                    <h2>Add Node</h2>
+                    <div class="form-group">
+                        <label for="nodeId">Node ID</label>
+                        <input type="text" id="nodeId" placeholder="node-1">
+                    </div>
+                    <div class="form-group">
+                        <label for="nodeType">Node Type</label>
+                        <input type="text" id="nodeType" placeholder="person">
+                    </div>
+                    <div class="form-group">
+                        <label for="nodeData">Node Data (JSON)</label>
+                        <textarea id="nodeData" rows="3" placeholder='{"name": "Alice", "age": 30}'></textarea>
+                    </div>
+                    <button id="addNode" class="btn btn-primary">Add Node</button>
+                </section>
+
+                <section class="control-section">
+                    <h2>Add Edge</h2>
+                    <div class="form-group">
+                        <label for="edgeSource">Source Node ID</label>
+                        <input type="text" id="edgeSource" placeholder="node-1">
+                    </div>
+                    <div class="form-group">
+                        <label for="edgeTarget">Target Node ID</label>
+                        <input type="text" id="edgeTarget" placeholder="node-2">
+                    </div>
+                    <div class="form-group">
+                        <label for="edgeRelationship">Relationship</label>
+                        <input type="text" id="edgeRelationship" placeholder="knows">
+                    </div>
+                    <div class="form-group">
+                        <label for="edgeProperties">Properties (JSON)</label>
+                        <textarea id="edgeProperties" rows="2" placeholder='{"since": "2020"}'></textarea>
+                    </div>
+                    <button id="addEdge" class="btn btn-primary">Add Edge</button>
+                </section>
+
+                <section class="control-section">
+                    <h2>Graph Stats</h2>
+                    <div id="stats" class="stats-container">
+                        <div class="stat-item">
+                            <span class="stat-label">Nodes:</span>
+                            <span id="nodeCount" class="stat-value">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Edges:</span>
+                            <span id="edgeCount" class="stat-value">0</span>
+                        </div>
+                    </div>
+                    <button id="refreshStats" class="btn btn-secondary">Refresh Stats</button>
+                </section>
+            </aside>
+
+            <!-- Main graph visualization area -->
+            <main class="graph-container">
+                <div class="graph-header">
+                    <h2>Graph Visualization</h2>
+                    <div class="graph-actions">
+                        <button id="centerGraph" class="btn btn-small">Center</button>
+                        <button id="deleteSelected" class="btn btn-small btn-danger">Delete Selected</button>
+                    </div>
+                </div>
+                <div id="graph" class="graph-canvas"></div>
+                <div id="graphInfo" class="graph-info">
+                    <p>Click on nodes or edges to select them. Use the controls on the left to add new elements.</p>
+                </div>
+            </main>
+        </div>
+
+        <!-- Toast notifications -->
+        <div id="toast" class="toast"></div>
+    </div>
+
+    <script src="/app.js"></script>
+</body>
+</html>
